@@ -9,5 +9,6 @@ public class OrderStatusTest {
         int normalType = 2;
         OrderStatus orderStatus = OrderStatus.getTypeByValue(normalType);
         System.out.println(orderStatus.message);
+        System.out.println("\"meituan\" = " + "meituan");
     }
 }
