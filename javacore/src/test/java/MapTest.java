@@ -1,8 +1,12 @@
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author qidi
@@ -24,6 +28,13 @@ public class MapTest {
         map.put(4, "4");
 
         System.out.println(aoo.getMap().get(4));
+
+        List<Boo> booList = Lists.newArrayList();
+        Map<Integer, String> boxId2ErrorCode = booList.stream().filter(boo -> null != boo.getAge()).collect(Collectors.toMap(Boo::getAge, Boo::getName, (k1, k2) -> k1));
+
+        List<Integer> list = Lists.newArrayList(1, 2, 3);
+        System.out.println(new Gson().toJson(list));
+
     }
 
     @Data
@@ -31,4 +42,11 @@ public class MapTest {
     public static class Aoo {
         private Map<Integer, String> map;
     }
+
+    @Data
+    public static class Boo {
+        Integer age;
+        String name;
+    }
+
 }

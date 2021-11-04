@@ -22,13 +22,23 @@ public class TestInterruptibly {
             }
         };
 
+        Thread t2 = new Thread() {
+            @Override
+            public void run() {
+                System.out.println(Thread.currentThread().getName());
+                bc.bFuction();
+            }
+        };
 
         Thread t1 = new Thread() {
             @Override
             public void run() {
+                t2.start();
                 bc.bFuction();
+                System.out.println("启动 t2");
             }
         };
+
 
         String tName = Thread.currentThread().getName();
 
@@ -36,14 +46,23 @@ public class TestInterruptibly {
         t0.start();
         System.out.println(tName + "-我等个5秒，再启动t1");
         Thread.sleep(5000);
-        System.out.println(tName + "-启动t1");
-        t1.start();
+        Thread.currentThread().interrupt();
+        System.out.println(Thread.currentThread().getName() + "我主动打断自己");
+//        System.out.println(tName + "-启动t1");
+//        t1.start();
+//        System.out.println(t1.getName() + "启动了");
+//
+//        System.out.println(tName + "-t1获取不到锁，t0这货睡觉了，没释放，我等个5秒！");
+//        Thread.sleep(5000);
+//        Thread.interrupted();
+//        System.out.println(tName + "-等了5秒了，不等了，把t1中断了！");
+//        System.out.println(t1.getName());
+////        t1.interrupt();
+        System.out.println("你好");
 
-        System.out.println(tName + "-t1获取不到锁，t0这货睡觉了，没释放，我等个5秒！");
-        Thread.sleep(5000);
-        System.out.println(tName + "-等了5秒了，不等了，把t1中断了！");
-        t1.interrupt();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            System.currentTimeMillis();
+        }
 
-        Thread.sleep(Long.MAX_VALUE);
     }
 }
