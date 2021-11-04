@@ -56,6 +56,16 @@ public class GraphDataTest {
         int value;
         boolean isFirst;
     }
+
+    /**
+     * 边的数据结构
+     */
+    @Data
+    @AllArgsConstructor
+    public static class Edge {
+        Long start;
+        Long end;
+    }
 }
 
 
