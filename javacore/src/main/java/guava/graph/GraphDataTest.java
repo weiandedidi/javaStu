@@ -1,4 +1,4 @@
-package guava;
+package guava.graph;
 
 import com.google.common.graph.ElementOrder;
 import com.google.common.graph.GraphBuilder;
@@ -27,14 +27,24 @@ public class GraphDataTest {
         Node node3 = new Node(3L, 3, false);
         Node node4 = new Node(4L, 4, false);
         Node node5 = new Node(5L, 5, false);
+        Node node6 = new Node(6L, 6, false);
+        Node node7 = new Node(7L, 7, false);
+        graph.addNode(node1);
+        graph.addNode(node2);
+        graph.addNode(node3);
+        graph.addNode(node4);
+        graph.addNode(node5);
+        graph.addNode(node6);
+        graph.addNode(node7);
 
+
+        graph.putEdge(node1, node2);
+        graph.putEdge(node1, node3);
         graph.putEdge(node2, node4);
         graph.putEdge(node3, node4);
         graph.putEdge(node4, node5);
-        graph.putEdge(node1, node2);
-        graph.putEdge(node1, node3);
 
-//        System.out.println(graph.nodes());
+        System.out.println(graph.nodes());
 //        System.out.println(graph.edges());
 
 //        System.out.println(graph.edges());
@@ -43,7 +53,7 @@ public class GraphDataTest {
 //        System.out.println(graph.predecessors(node2));
 //        System.out.println(graph.predecessors(node3));
 //        System.out.println(graph.predecessors(node4));
-        System.out.println(graph.successors(node1));
+        System.out.println(graph.successors(node6));
     }
 
     /**

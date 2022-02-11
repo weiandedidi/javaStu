@@ -1,5 +1,6 @@
 package guavaStu.list;
 
+import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
 
 import java.util.Arrays;
@@ -21,13 +22,18 @@ public class FindDemo {
         System.out.println(a);
         System.out.println(b);
 
-        List<Integer> ids = Arrays.asList(1, 2, 345, 6);
+        List<Integer> ids = Arrays.asList(1, 2, 12, 6);
         Optional<Integer> c = ids.stream().max(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o1.compareTo(o2) > 0 ? 1 : (o1.compareTo(o2) == 0 ? 0 : -1);
             }
         });
-        System.out.println(c.orElse(111));
+        System.out.println(c);
+
+        List<Integer> aooList = Lists.newArrayList(1, 2, 3, 4);
+        List<Integer> booList = Lists.newArrayList(1, 2, 3, 4, 6, 7);
+        System.out.println(aooList.containsAll(booList));
+        System.out.println(booList.containsAll(aooList));
     }
 }
