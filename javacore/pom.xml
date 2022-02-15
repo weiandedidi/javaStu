@@ -218,13 +218,6 @@
             <version>1.2.0</version>
         </dependency>
 
-        <!--测试 大脑的问题-->
-        <dependency>
-            <groupId>com.sankuai.shangou.empower.uwmsscheduler</groupId>
-            <artifactId>uwms-brain</artifactId>
-            <version>1.7.0-SNAPSHOT</version>
-        </dependency>
-
         <!--        gson-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
