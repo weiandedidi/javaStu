@@ -43,6 +43,14 @@ public class AssetDemo {
         assertThat(aooList).is(new Condition<>(list -> list.stream().anyMatch(o -> o.getAge() == 123), "isMatch123", "check123"));
     }
 
+    @Test
+    public void listContains() {
+        List<Long> list = Lists.newArrayList(1L, 2L);
+
+        System.out.println(list.contains(null));
+
+    }
+
 
     @Test
     public void testThen() {
