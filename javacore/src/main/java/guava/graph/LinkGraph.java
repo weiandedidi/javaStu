@@ -3,6 +3,7 @@ package guava.graph;
 import com.google.common.collect.Lists;
 import com.google.common.graph.ElementOrder;
 import com.google.common.graph.GraphBuilder;
+import com.google.common.graph.Graphs;
 import com.google.common.graph.MutableGraph;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
@@ -61,7 +62,7 @@ public class LinkGraph {
         System.out.println(graph.edges());
         LinkGraph linkGraph = new LinkGraph(nodeList, edgeList);
         System.out.println(new Gson().toJson(linkGraph));
-        System.out.println(graph);
+        System.out.println(Graphs.hasCycle(graph));
 
     }
 }
