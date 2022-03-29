@@ -62,6 +62,7 @@ public class LinkGraph {
         System.out.println(graph.edges());
         LinkGraph linkGraph = new LinkGraph(nodeList, edgeList);
         System.out.println(new Gson().toJson(linkGraph));
+        //判断是否有环
         System.out.println(Graphs.hasCycle(graph));
 
     }
