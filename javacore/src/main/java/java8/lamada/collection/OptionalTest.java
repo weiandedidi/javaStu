@@ -1,6 +1,7 @@
 package java8.lamada.collection;
 
-import org.assertj.core.util.Lists;
+
+import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;

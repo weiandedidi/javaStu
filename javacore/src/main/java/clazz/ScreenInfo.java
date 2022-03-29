@@ -1,11 +1,11 @@
 package clazz;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.assertj.core.util.Lists;
 
 /**
  * @author maqidi

@@ -1,8 +1,8 @@
 package collection;
 
+import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.assertj.core.util.Lists;
 
 import java.util.List;
 import java.util.stream.Collectors;

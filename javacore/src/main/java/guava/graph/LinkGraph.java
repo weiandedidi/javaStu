@@ -61,6 +61,7 @@ public class LinkGraph {
         System.out.println(graph.edges());
         LinkGraph linkGraph = new LinkGraph(nodeList, edgeList);
         System.out.println(new Gson().toJson(linkGraph));
+        System.out.println(graph);
 
     }
 }

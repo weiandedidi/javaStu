@@ -1,8 +1,8 @@
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.assertj.core.util.Lists;
 
 import java.util.HashMap;
 import java.util.List;
