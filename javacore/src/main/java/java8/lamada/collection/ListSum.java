@@ -21,10 +21,17 @@ import java.util.stream.Collectors;
 public class ListSum {
 
     public static void main(String[] args) {
+
+
         //1.加和可以为空，空的时候返回3
         List<Aoo> aoos = Lists.newArrayList(new Aoo("1", 3), new Aoo("2", 4), new Aoo("3", 5));
         Optional<Integer> sum = Optional.ofNullable(aoos.stream().map(Aoo::getAge).reduce(0, Integer::sum));
         System.out.println(sum.orElse(3));
+
+        //4. 加和操作
+        aoos = Lists.newArrayList(new Aoo("1", 3), new Aoo("2", 4), new Aoo("3", 5));
+        int count = aoos.stream().mapToInt(Aoo::getAge).sum();
+        System.out.println("加和操作" + count);
 
 
         //2.可以为空
@@ -45,6 +52,7 @@ public class ListSum {
         aoos = Lists.newArrayList(new Aoo("1", null), new Aoo("2", null), new Aoo("3", null));
         sum = aoos.stream().map(Aoo::getAge).reduce(Integer::sum);
         System.out.println(sum.orElse(5));
+
 
     }
 
