@@ -19,7 +19,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <aspect.version>1.8.5</aspect.version>
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>5.2.21.RELEASE</spring.version>
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
         <spring-data-redis.version>1.6.0.RELEASE</spring-data-redis.version>
         <spring-integration-kafka.version>1.2.0.RELEASE</spring-integration-kafka.version>
