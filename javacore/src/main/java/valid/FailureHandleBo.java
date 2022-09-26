@@ -3,9 +3,11 @@ package valid;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * 用来承载FailureHandle关键字段的bo
@@ -16,6 +18,7 @@ import javax.validation.constraints.NotEmpty;
  */
 @Builder
 @Data
+@Validated
 public class FailureHandleBo {
 
 
@@ -23,20 +26,21 @@ public class FailureHandleBo {
      * 仓库id
      * table.field : failure_handle.warehouse_id
      */
-    @NonNull
+    @NotNull(message = "warehouseId不为空")
+    @Valid
     private Long warehouseId;
 
     /**
      * 设备的主键id
      * table.field : failure_handle.device_id
      */
-    @NonNull
+    @NotNull()
     private Long deviceId;
 
     /**
      * 设备类型
      */
-    @NonNull
+    @NotNull()
     private Integer deviceType;
 
     /**
@@ -48,7 +52,7 @@ public class FailureHandleBo {
     /**
      * 错误码
      */
-    @NonNull
+    @NotNull()
     private Integer type;
 
     /**
@@ -66,7 +70,7 @@ public class FailureHandleBo {
     /**
      * 1-未处理 2-已处理 3-缺货
      */
-    @NonNull
+    @NotNull()
     private Integer status;
 
     /**
@@ -103,5 +107,4 @@ public class FailureHandleBo {
 
         return failureHandle;
     }
-
 }

@@ -46,6 +46,11 @@ public class StreamList {
         Set<Integer> typeSet = aooList.stream().collect(Collectors.groupingBy(Aoo::getType)).keySet();
         System.out.println(typeSet.contains(1));
 
+        //测试空 addAll
+        List<String> yyList = Lists.newArrayList("a", "b");
+        yyList.addAll(Lists.newArrayList());
+        System.out.println(yyList);
+
 
     }
 

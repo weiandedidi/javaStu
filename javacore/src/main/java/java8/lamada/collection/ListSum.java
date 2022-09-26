@@ -29,7 +29,8 @@ public class ListSum {
         System.out.println(sum.orElse(3));
 
         //4. 加和操作
-        aoos = Lists.newArrayList(new Aoo("1", 3), new Aoo("2", 4), new Aoo("3", 5));
+//        aoos = Lists.newArrayList(new Aoo("1", 3), new Aoo("2", 4), new Aoo("3", 5));
+        aoos = Lists.newArrayList();
         int count = aoos.stream().mapToInt(Aoo::getAge).sum();
         System.out.println("加和操作" + count);
 

@@ -4,7 +4,9 @@ import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -34,6 +36,13 @@ public class Java8ListDemo {
         List<Integer> ids = Lists.transform(aoos, Aoo::getId);
         aoos.add(new Aoo(4, 15));
         System.out.println(ids);
+
+        //测试聚合
+        //List<Aoo> testSumList = Lists.newArrayList();
+        List<Aoo> testSumList = null;
+        int orderTotal = Optional.ofNullable(testSumList).orElse(new ArrayList<>()).stream().mapToInt(Aoo::getAge).sum();
+        System.out.println(orderTotal);
+
     }
 
     @Data
