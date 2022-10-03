@@ -1,5 +1,10 @@
 package algorithm.datastructure.tree;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * 树的深度，查找树的深度，因为左右需要进行比对，所以需要左右比对
  *
@@ -154,7 +159,7 @@ public class TreeDepth {
      * 题目：101. 对称二叉树
      * https://leetcode.cn/problems/symmetric-tree/
      * 思路：
-     *  对称要素:
+     * 对称要素:
      * 1 两子树都空，即相等
      * 2 单子树非空，不等
      * 3 两子树根节点值不等，不等
@@ -162,29 +167,77 @@ public class TreeDepth {
      * 方法：递归
      */
     public boolean isSymmetric(TreeNode root) {
-        if(null==root){
+        if (null == root) {
             return true;
         }
-        return isSymmetric(root.left,root.right);
+        return isSymmetric(root.left, root.right);
     }
+
     /**
-     1. 两子树都空，对称 true
-     2. 两子树单一空，不对称 false
-     3. 两子树根节点不相等，不对称 false
-     4. 继续向下递归判断各自下面的节点
+     * 1. 两子树都空，对称 true
+     * 2. 两子树单一空，不对称 false
+     * 3. 两子树根节点不相等，不对称 false
+     * 4. 继续向下递归判断各自下面的节点
      */
-    public boolean isSymmetric(TreeNode left,TreeNode right){
-        if(null==left&& null==right){
+    public boolean isSymmetric(TreeNode left, TreeNode right) {
+        if (null == left && null == right) {
             return true;
         }
-        if(null==left||null==right){
+        if (null == left || null == right) {
             return false;
         }
-        if(left.val!=right.val){
+        if (left.val != right.val) {
             return false;
         }
         //轴对称，左子树的左根节点，右子树的由根节点
-        return isSymmetric(left.left,right.right)&&isSymmetric(left.right,right.left);
+        return isSymmetric(left.left, right.right) && isSymmetric(left.right, right.left);
+    }
+
+    /**
+     * 题目：1110. 删点成林
+     * https://leetcode.cn/problems/delete-nodes-and-return-forest/
+     * 思路：
+     * 记录删除节点的set，用于快速过滤删除节点
+     * 1  根节点没删除，加入原有的树
+     * 2 根左节点 判断，被删除，加入下面的子树
+     *
+     * @param root
+     * @param to_delete
+     * @return
+     */
+    public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
+        //使用set存储删除掉的节点，方便查找删除节点是否需要删除，避免遍历
+        Set<Integer> delSet = new HashSet<>();
+        List<TreeNode> list = new ArrayList<>();
+        for (int d : to_delete) {
+            delSet.add(d);
+        }
+        //自身是否被删除。
+        root = dfsFindDelNode(root, delSet, list);
+        if (null != root) {
+            list.add(root);
+        }
+        return list;
+    }
+
+    public TreeNode dfsFindDelNode(TreeNode root, Set<Integer> delSet, List<TreeNode> list) {
+        if (null == root) {
+            return root;
+        }
+        //找左节点待删除节点
+        root.left = dfsFindDelNode(root.left, delSet, list);
+        //找右节点的待删除节点
+        root.right = dfsFindDelNode(root.right, delSet, list);
+        if (delSet.contains(root.val)) {
+            if (null != root.left) {
+                list.add(root.left);
+            }
+            if (null != root.right) {
+                list.add(root.right);
+            }
+            root = null;
+        }
+        return root;
     }
 
 
