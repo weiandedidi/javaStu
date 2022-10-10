@@ -1,6 +1,6 @@
 package algorithm.datastructure.tree;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 树的遍历
@@ -49,28 +49,33 @@ public class TreeTraversal {
     }
 
     /**
-     * 先序遍历, 反着访问顺序压栈
-     * <p>
-     * 根->左子树->右子树
-     * https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
+     * 题目：144. 二叉树的前序遍历
+     * 连接：https://leetcode.cn/problems/binary-tree-preorder-traversal/
+     * 难度：栈的访问，中
+     * 思路：栈，入栈先右后左，取栈顶；保证左->右的访问
      *
      * @param root
      */
-    public void preOrder(TreeNode root) {
-        if (root == null) {
-            return;
-        }
+    public List<Integer> preorderTraversal(TreeNode root) {
+        //借用栈，输出list
+        List<Integer> list = new ArrayList<>();
+        //栈，先进后出，所以前序遍历的 入栈顺序是 先右后左,取栈顶，保证遍历是 左到右侧
         Stack<TreeNode> stack = new Stack<>();
+        if (null == root) {
+            return list;
+        }
         stack.push(root);
         while (!stack.isEmpty()) {
-            //先访问节点，并从栈顶移除
-            TreeNode top = stack.pop();
-            System.out.println(top.val);
-            //右压栈
-            if (null != top.right) stack.push(top.right);
-            //左压栈
-            if (null != top.left) stack.push(top.left);
+            TreeNode node = stack.pop();
+            list.add(node.val);
+            if (null != node.right) {
+                stack.push(node.right);
+            }
+            if (null != node.left) {
+                stack.push(node.left);
+            }
         }
+        return list;
     }
 
 
@@ -118,6 +123,43 @@ public class TreeTraversal {
      */
     public void postOrder(TreeNode root) {
 
+    }
+
+    /**
+     * 题目：637. 二叉树的层平均值
+     * 难度：简单
+     * https://leetcode.cn/problems/average-of-levels-in-binary-tree/
+     * 思路：
+     * 二叉树的平均值是每层的平均值，每层的操作优选 层序遍历（广度优先bfs），两个队列，一个层序遍历，一个记录平均值，LinkedList<>()  offer poll
+     *
+     * @param root
+     * @return
+     */
+    public List<Double> averageOfLevels(TreeNode root) {
+        //队列用于广度层序遍历
+        List<Double> averages = new ArrayList<>();
+        //list用于存储平均值
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            double sum = 0;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                sum = sum + node.val;
+                TreeNode left = node.left;
+                if (null != left) {
+                    queue.offer(left);
+                }
+                TreeNode right = node.right;
+                if (null != right) {
+                    queue.offer(right);
+                }
+            }
+            Double average = sum / size;
+            averages.add(average);
+        }
+        return averages;
     }
 
     /**
