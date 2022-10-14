@@ -43,6 +43,14 @@ public class Java8ListDemo {
         int orderTotal = Optional.ofNullable(testSumList).orElse(new ArrayList<>()).stream().mapToInt(Aoo::getAge).sum();
         System.out.println(orderTotal);
 
+        //测试list不为空的
+        List<Aoo> sourceList = Lists.newArrayList();
+        List<Integer> filterList = sourceList.stream().filter(aoo -> aoo.getAge() > 10).map(Aoo::getAge).collect(Collectors.toList());
+        System.out.println(filterList);
+
+        List<Aoo> sourceListV2 = null;
+        List<Integer> filterListV2 = sourceListV2.stream().filter(aoo -> aoo.getAge() > 10).map(Aoo::getAge).collect(Collectors.toList());
+        System.out.println(filterListV2);
     }
 
     @Data
