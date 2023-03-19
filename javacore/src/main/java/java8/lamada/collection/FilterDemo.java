@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class FilterDemo {
 
     public static void main(String[] args) {
-        List<SortDemo.Foo> foos = Lists.newArrayList(new SortDemo.Foo("b", 2, new SortDemo.Aoo("a1", 1)), new SortDemo.Foo("a", 1, new SortDemo.Aoo("a2", 2)));
+        List<SortDemo.Foo> foos = Lists.newArrayList(new SortDemo.Foo("b", 2, new SortDemo.Aoo("a1", 1), true), new SortDemo.Foo("a", 1, new SortDemo.Aoo("a2", 2), true));
         //过滤掉第一个
         List<SortDemo.Foo> filteredList = foos.stream().filter(foo -> foo.getId().equals(1)).collect(Collectors.toList());
         System.out.println(filteredList);

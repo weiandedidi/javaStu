@@ -14,11 +14,15 @@ import java.util.List;
  */
 public class SortDemo {
     public static void main(String[] args) {
-        List<Foo> foos = Lists.newArrayList(new Foo("b", 2, new Aoo("a1", 1)), new Foo("a", 1, new Aoo("a2", 2)));
+        List<Foo> foos = Lists.newArrayList(new Foo("b", 2, new Aoo("a1", 1), false), new Foo("b", 1, new Aoo("a1", 1), true), new Foo("a", 1, new Aoo("a2", 2), false));
         foos.sort(Comparator.comparing(Foo::getId));
         System.out.println(foos);
+        //按照 name排序，name相同按照id大小排序
+        foos.sort(Comparator.comparing(Foo::getFlag).reversed().thenComparing(Foo::getName).thenComparing(Foo::getId));
+        System.out.println(foos);
+
         //按照元素内排序
-        foos.sort(Comparator.comparing(o -> o.getAoo().aId));
+        foos.sort(Comparator.comparing(o -> o.getAoo().getAId()));
         System.out.println(foos);
         //进行逆序
         foos.stream().sorted(Comparator.comparing(Foo::getId).reversed());
@@ -33,6 +37,7 @@ public class SortDemo {
         private String name;
         private Integer id;
         private Aoo aoo;
+        private Boolean flag;
 
     }
 
