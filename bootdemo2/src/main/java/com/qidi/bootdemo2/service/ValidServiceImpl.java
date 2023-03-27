@@ -11,8 +11,18 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class ValidServiceImpl implements ValidService {
     @Override
-    public ParamResponse<String> checkParams(ParamQuery query) {
-        ParamResponse response = ParamResponse.builder()
+    public ResultResponse<String> checkParams(ParamQuery query) {
+        ResultResponse response = ResultResponse.builder()
+                .code(200)
+                .message("success")
+                .data("data")
+                .build();
+        return response;
+    }
+
+    @Override
+    public ResultResponse<String> checkParamsValid(Long warehouseId) {
+        ResultResponse response = ResultResponse.builder()
                 .code(200)
                 .message("success")
                 .data("data")

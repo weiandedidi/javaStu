@@ -3,9 +3,7 @@ package com.qidi.bootdemo2.controller;
 import com.google.common.collect.Lists;
 import com.qidi.bootdemo2.service.ParamQuery;
 import com.qidi.bootdemo2.service.ParamRequest;
-import com.qidi.bootdemo2.service.ParamResponse;
-import com.qidi.bootdemo2.service.ValidService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.qidi.bootdemo2.service.ResultResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 /**
@@ -25,14 +22,11 @@ import javax.validation.constraints.Min;
 @RestController
 @RequestMapping("/test")
 @Component
+@Validated
 public class TestController {
 
-    @Autowired
-    ValidService validService;
-
-
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public ParamResponse<String> checkParams(@RequestBody ParamRequest request) {
+    public ResultResponse<String> checkParams(@RequestBody ParamRequest request) {
         System.out.println("===================");
 //        ParamQuery query = ParamQuery.ParamQueryCovert.INSTANCE.toParamQuery(request);
         ParamQuery query = new ParamQuery();
@@ -49,9 +43,15 @@ public class TestController {
     }
 
     @RequestMapping(value = "/checkV3", method = RequestMethod.GET)
-    public ParamResponse<String> checkResponse(Long id) {
+    public ResultResponse<String> checkResponse(Long id) {
         System.out.println("===================V3");
-        ParamResponse<String> response = new ParamResponse();
+        ResultResponse<String> response = new ResultResponse();
         return response;
+    }
+
+    @RequestMapping(value = "/checkV4", method = RequestMethod.GET)
+    public ResultResponse<String> checkParamsValid(Long id) {
+        System.out.println("===================V3");
+        return validService.checkParamsValid(id);
     }
 }

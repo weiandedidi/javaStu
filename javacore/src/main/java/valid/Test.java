@@ -15,16 +15,17 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        FailureHandleBo bo = FailureHandleBo.builder().boxIds("12").build();
-        FailureHandle failureHandle = FailureHandleBo.build(bo);
-        System.out.println(new Gson().toJson(failureHandle));
+//        FailureHandleBo bo = FailureHandleBo.builder().boxIds("12").build();
+//        FailureHandle failureHandle = FailureHandleBo.build(bo);
+//        System.out.println(new Gson().toJson(failureHandle));
 
 //        int a = 5;
 //        Integer b = new Integer(5);
 //        System.out.println(ObjectUtils.equals(a, b));
 //
-//        List<Aoo> aooList = Lists.newArrayList(new Aoo(1L, "1"), new Aoo(3L, "3"), new Aoo(2L, "2"), new Aoo(4L, "4"));
-//        aooList.sort(Comparator.comparingLong(Aoo::getAge));
+        List<Aoo> aooList = Lists.newArrayList(new Aoo(1L, "1"), new Aoo(3L, "3"), new Aoo(2L, "2"), new Aoo(4L, "4"));
+        aooList.sort(Comparator.comparingLong(Aoo::getAge));
+        System.out.println(aooList);
 //        System.out.println(aooList);
 //        aooList.removeIf(aoo -> {
 //            return aoo.getAge() < 3L;

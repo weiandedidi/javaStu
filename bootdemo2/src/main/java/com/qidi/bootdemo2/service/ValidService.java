@@ -3,6 +3,7 @@ package com.qidi.bootdemo2.service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 /**
  * 测试服务类的校验
@@ -16,5 +17,8 @@ import javax.validation.Valid;
 
 public interface ValidService {
 
-    ParamResponse<String> checkParams(@Valid ParamQuery query);
+    ResultResponse<String> checkParams(@Valid ParamQuery query);
+
+
+    ResultResponse<String> checkParamsValid(@Min(value = 1, message = "仓库id最小值大于1") Long warehouseId);
 }

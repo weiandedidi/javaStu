@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ParamResponse<T> {
+public class ResultResponse<T> {
 
     private Integer code;
     private String message;
