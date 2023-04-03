@@ -1,57 +1,44 @@
 package time;
 
+import org.joda.time.DateTime;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 /**
  * Java获取 ISO 8601格式时间
+ * 时间函数使用joda-time更精准因为：https://www.cnblogs.com/lyh971134228/articles/6354319.html
+ * joda-time
  * User: qidi
  * Date: 2018/9/19
  * Time: 下午7:35
  */
 public class TimeTest {
 
-    public static String getISO8601TimeFormat(Date date) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+08:00'");
-        String nowAsISO = df.format(date);
-        return nowAsISO;
-    }
-
-    public static long getISO8601Timestamp(String time) throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+08:00'");
-        Date date = df.parse(time);
-        return date.getTime();
-    }
-
-    public static long getTime(String time) throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyyMMdd");
-        Date date = df.parse(time);
-        return date.getTime();
-    }
-
-    /**
-     * 获取前一个小时的整点数字
-     *
-     * @param date 指定时间
-     * @return 前一小时整点数字
-     */
-    public static Integer getPreviousClock(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        Integer clock = calendar.get(Calendar.HOUR_OF_DAY) - 1;
-        return clock;
-    }
-
 
     public static void main(String[] args) throws ParseException {
-        Date date = new Date();
-        System.out.println(getISO8601TimeFormat(date));
-        System.out.println(getISO8601Timestamp("2018-09-19T19:41:10+08:00"));
-        System.out.println(getTime("20180827")/1000);
+        //以 Joda 的方式向某一个瞬间加上 90 天并输出结果
+        DateTime dateTime = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+        System.out.println(dateTime.plusDays(90).toString("yyyy/MM/dd HH:mm:ss.SSS"));
 
-        System.out.println(getPreviousClock(new Date()));
+        //距离 2000年 45 天之后的某天在下一个月的当前周的最后一天的日期
+        DateTime dateTime1 = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+        System.out.println(dateTime1.plusDays(45).plusMonths(1).dayOfWeek().withMaximumValue().toString("E yyyy/MM/dd HH:mm:ss.SSS"));
+
+        //将 Joda 计算结果插入到 JDK 对象中
+        Calendar calendar = Calendar.getInstance();
+        DateTime dateTime2 = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+        System.out.println(dateTime2.plusDays(45).plusMonths(1).dayOfWeek().withMaximumValue().toString("E yyyy/MM/dd HH:mm:ss.SSS"));
+        calendar.setTime(dateTime2.toDate());
+
+        //增减天，月，计算
+        DateTime dateTime3 = new DateTime(2000, 1, 1, 0, 0, 0, 0);
+        DateTime dateTime4 = dateTime3.minusMonths(1).minusWeeks(1).minusDays(1).minusHours(1).toDateTime();
+        System.out.println(dateTime4.toString("yyyy/MM/dd HH:mm:ss.SSS"));
+
+
     }
 }
