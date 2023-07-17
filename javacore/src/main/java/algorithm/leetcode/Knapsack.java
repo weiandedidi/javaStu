@@ -16,6 +16,7 @@ public class Knapsack {
         int W = 50;
         int n = val.length;
         System.out.println(knapsack(W, wt, val, n));
+
     }
 
     static int knapsack(int W, int wt[], int val[], int n) {
