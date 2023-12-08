@@ -1,6 +1,7 @@
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,13 @@ public class ListCall {
         Integer abc = 1;
         System.out.println(Objects.equals(abc, 1));
 
+        List<Aoo> axx = Lists.newArrayList();
+        Integer xxa = axx.stream().filter(o -> o.getName().equals("xx")).findFirst().map(Aoo::getAge).orElse(null);
+        System.out.println(xxa);
+
+
     }
+
 
     @Data
     @AllArgsConstructor
@@ -46,3 +53,4 @@ public class ListCall {
         private int age;
     }
 }
+

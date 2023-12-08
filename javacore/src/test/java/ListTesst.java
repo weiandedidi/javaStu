@@ -36,4 +36,12 @@ public class ListTesst {
         System.out.println(ObjectUtils.equals(null, no1));
     }
 
+    @Test
+    public void testAll() {
+        List<Long> idList = Lists.newArrayList(1L, 2L, 3L);
+        List<Long> idListV2 = Lists.newArrayList(3L, 2L, 3L);
+        idList.addAll(Lists.newArrayList());
+        System.out.println(idList);
+    }
+
 }
