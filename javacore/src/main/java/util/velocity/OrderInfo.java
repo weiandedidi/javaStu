@@ -2,6 +2,8 @@ package util.velocity;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 测试velocity的引擎模版
  *
@@ -15,6 +17,11 @@ public class OrderInfo {
     private String userName;
     private String productName;
     private Double price;
+    /**
+     * 产地
+     */
+    private List<String> addressList;
+
 
     // getters and setters...
 
