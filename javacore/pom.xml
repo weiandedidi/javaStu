@@ -84,7 +84,7 @@
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
+            <version>1.9.4</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -253,6 +253,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.6</version>
+        </dependency>
+        <!-- Apache Velocity 轻量级模版引擎（同freemark，但是这个更轻量） https://velocity.apache.org/download.cgi -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.3</version>
         </dependency>
 
     </dependencies>
