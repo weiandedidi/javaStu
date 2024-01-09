@@ -1,10 +1,8 @@
 package util.velocity;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,6 +15,7 @@ import java.util.Map;
 
 /**
  * 模版测试类
+ * 这个是java返回 富文本plaintext的生成方法类的定义，用于java进行富文本的生成
  * <p>
  * 模版的编写示例：
  * https://velocity.apache.org/engine/devel/user-guide.html#if-elseif-else
@@ -35,6 +34,7 @@ public class VelocityTemplateTest {
         List<String> addressList = Lists.newArrayList("内蒙古", "新疆", "湖北");
         orderInfo.setAddressList(addressList);
         // #if() #end 进行模块处理, 严格大小写
+        // 这里的string可以通过读取特定的配置替换，实现动态化配置文本
         String templateString = "Order ID: $orderId\nUser Name: $userName\n#if($productName && $productName != '')Product Name: $productName\n#end #if($price && $price != '')价格：$price\n#end#foreach( $address in $addressList)  地址: $address;\n#end";
         String formattedOrderInfo = formatOrderInfo(templateString, orderInfo);
         System.out.println(formattedOrderInfo);

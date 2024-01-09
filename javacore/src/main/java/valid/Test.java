@@ -1,10 +1,8 @@
 package valid;
 
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.apache.commons.lang.ObjectUtils;
 
 import java.util.Comparator;
 import java.util.List;
