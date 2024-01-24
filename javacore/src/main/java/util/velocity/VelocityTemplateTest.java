@@ -38,6 +38,7 @@ public class VelocityTemplateTest {
         String templateString = "Order ID: $orderId\nUser Name: $userName\n#if($productName && $productName != '')Product Name: $productName\n#end #if($price && $price != '')价格：$price\n#end#foreach( $address in $addressList)  地址: $address;\n#end";
         String formattedOrderInfo = formatOrderInfo(templateString, orderInfo);
         System.out.println(formattedOrderInfo);
+
     }
 
 
