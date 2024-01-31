@@ -1,5 +1,9 @@
 package java8.lamada.fanxing.defclass;
 
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
 /**
  * 泛型测试方法
  * 类上定义的泛型，规范参数属性类型
@@ -28,6 +32,10 @@ public class GenericDemo<T> {
         System.out.println(t);
     }
 
+    public <E> void printList(List<E> list) {
+        list.forEach(System.out::print);
+    }
+
     public static void main(String[] args) {
         GenericDemo<String> demo = new GenericDemo<>();
         //方法中的定义的泛型
@@ -35,13 +43,16 @@ public class GenericDemo<T> {
         demo.printInfo("AAAAA");
         demo.printInfo(8.88f);
 
+        List<Integer> list = Lists.newArrayList(1, 2, 3, 5, 6);
+        demo.printList(list);
+
 
         GenericDemo<String> demo_1 = new GenericDemo<>();
         demo_1.setBody("q");
         System.out.println(demo_1.getBody());
 
         GenericDemo<Integer> demo_2 = new GenericDemo<>();
-        demo_2.setBody(4);
+        demo_2.setBody(5);
         System.out.println(demo_2.getBody());
 
     }
