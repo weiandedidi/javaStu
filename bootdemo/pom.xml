@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>bootdemo</artifactId>
-    <name>springdemo</name>
+    <name>bootdemo</name>
     <packaging>jar</packaging>
 
     <properties>

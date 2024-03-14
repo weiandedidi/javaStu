@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.qidi.bootdemo2.service.ParamQuery;
 import com.qidi.bootdemo2.service.ParamRequest;
 import com.qidi.bootdemo2.service.ResultResponse;
+import com.qidi.bootdemo2.service.ValidService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,9 @@ import javax.validation.constraints.Min;
 @Component
 @Validated
 public class TestController {
+
+    @Autowired
+    ValidService validService;
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     public ResultResponse<String> checkParams(@RequestBody ParamRequest request) {
@@ -52,6 +57,6 @@ public class TestController {
     @RequestMapping(value = "/checkV4", method = RequestMethod.GET)
     public ResultResponse<String> checkParamsValid(Long id) {
         System.out.println("===================V3");
-        return validService.checkParamsValid(id);
-    }
+        ResultResponse<String> response = new ResultResponse();
+        return response;    }
 }

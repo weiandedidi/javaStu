@@ -18,3 +18,5 @@ so:
 message:
   length: 40960
 
+server:
+  port: 8083

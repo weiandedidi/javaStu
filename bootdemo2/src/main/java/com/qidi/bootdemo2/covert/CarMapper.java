@@ -15,7 +15,6 @@ import java.util.List;
  * @date 2019-01-31 16:25
  */
 
-//@Mapper(componentModel = "spring")
 @Mapper
 public interface CarMapper {
 

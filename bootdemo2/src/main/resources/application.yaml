@@ -5,4 +5,5 @@ task:
   maxPoolSize: 50
   queueCapacity: 200
   threadNamePrefix: "WarehouseExecutor-"
-
+server:
+  port: 8081
