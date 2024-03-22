@@ -7,5 +7,8 @@ public class TestYu {
         System.out.println(3 & 1);
         System.out.println(2 | 1);
         System.out.println(7 | 5);
+
+        long currentTimeMillis = System.currentTimeMillis();
+        System.out.println(currentTimeMillis);
     }
 }
