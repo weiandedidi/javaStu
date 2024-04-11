@@ -4,7 +4,9 @@ import com.google.common.base.Preconditions;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang.StringUtils;
 
+import java.util.Optional;
 import java.util.concurrent.Callable;
 
 /**
@@ -56,4 +58,6 @@ public class CallableDemo {
         private String name;
         private Integer id;
     }
+    //写一下md5的加密算法
+
 }

@@ -1,6 +1,7 @@
 package thread;
 
 /**
+ * threadLocal关键字是 线程自有的，线程不会共享，线程隔离
  * @author qidi
  * @date 2019-12-18 21:01
  */

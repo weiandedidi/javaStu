@@ -17,4 +17,7 @@ public class SourceDemo {
      * 计数器
      */
     public static int count = 0;
+    //写一个快速排序方法
+
+
 }
