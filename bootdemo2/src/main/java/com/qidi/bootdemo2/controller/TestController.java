@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.qidi.bootdemo2.service.ParamQuery;
 import com.qidi.bootdemo2.service.ParamRequest;
 import com.qidi.bootdemo2.service.ResultResponse;
+import com.qidi.bootdemo2.service.ValidService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,15 +26,18 @@ import javax.validation.constraints.Min;
 @Component
 @Validated
 public class TestController {
+    @Autowired
+    ValidService validService;
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     public ResultResponse<String> checkParams(@RequestBody ParamRequest request) {
         System.out.println("===================");
-//        ParamQuery query = ParamQuery.ParamQueryCovert.INSTANCE.toParamQuery(request);
-        ParamQuery query = new ParamQuery();
+        ParamQuery query = ParamQuery.ParamQueryCovert.INSTANCE.toParamQuery(request);
+//        ParamQuery query = new ParamQuery();
         query.setName(null);
         query.setWarehouseId(0L);
         query.setWmOrderIdList(Lists.newArrayList());
+
         return validService.checkParams(query);
     }
 
