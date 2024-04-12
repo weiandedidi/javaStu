@@ -4,10 +4,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.Min;
-
 /**
  * 测试javaAgent探针篡改的类
+ * 详见这个文档：https://blog.csdn.net/qq_36370910/article/details/130562385
+ * 本质修改agent然后替换文件。
+ *
+ * 加载时修改vm参数，找到test-agent.jar包的位置
+ * -javaagent:.../javaagent/JavaAgent/target/test-agent.jar
  *
  * @author maqidi
  * @version 1.0
