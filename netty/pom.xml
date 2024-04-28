@@ -11,7 +11,7 @@
 
     <artifactId>netty</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bootdemo2</name>
+    <name>netty</name>
 
 
     <properties>
