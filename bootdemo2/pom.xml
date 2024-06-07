@@ -57,6 +57,11 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--spring的aop框架-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
         <!--配置库存thrift注解需要的hibernate validator-->
         <dependency>
@@ -92,6 +97,19 @@
             <version>4.1.31.Final</version>
         </dependency>
 
+<!--        &lt;!&ndash;mysql&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+
+        <!--mybatis-plus-->
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
+<!--            <version>3.3.2</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

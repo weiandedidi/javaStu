@@ -2,7 +2,6 @@ package valid;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NonNull;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;

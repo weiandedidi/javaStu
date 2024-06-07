@@ -1,8 +1,6 @@
 package com.qidi.bootdemo2;
 
-import com.qidi.bootdemo2.nio.httpsocket.HttpServer;
 import com.qidi.bootdemo2.nio.live.LiveServer;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

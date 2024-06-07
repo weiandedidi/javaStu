@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
-
 /**
  * @author qidi
  * @date 2019-09-18 18:44
@@ -17,7 +15,7 @@ import static org.junit.Assert.*;
 public class HelloImplTest {
 
     @Autowired
-    Hello hello;
+    HelloService hello;
 
     @Test
     public void sayHi() throws InterruptedException {

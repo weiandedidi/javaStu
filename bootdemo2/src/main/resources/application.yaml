@@ -5,4 +5,8 @@ task:
   maxPoolSize: 50
   queueCapacity: 200
   threadNamePrefix: "WarehouseExecutor-"
-
+# 配置aop启用
+#spring:
+#  aop:
+#    auto: true
+#    proxy-target-class: true
