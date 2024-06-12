@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qidi.mybatisplus.demos.repository.mapper.UserMapper">
+
+    <!--自定义sql-->
+    <select id="selectByCondition" resultType="com.qidi.mybatisplus.demos.repository.entity.User"
+            parameterType="com.qidi.mybatisplus.demos.repository.mapper.UserCondition">
+        select *
+        from user
+        <where>
+        <if test="ids != null and ids.size() > 0">
+            AND id IN
+            <foreach item="id" index="index" collection="ids"
+                     open="(" separator="," close=")">
+                #{id}
+            </foreach>
+        </if>
+        <if test="name != null and name != ''">
+            AND name = #{name}
+        </if>
+        <if test="minAge != null">
+            AND age &gt;= #{minAge}
+        </if>
+        <if test="maxAge != null">
+            AND age &lt;= #{maxAge}
+        </if>
+        </where>
+    </select>
+
+
+</mapper>
