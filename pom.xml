@@ -81,8 +81,11 @@
                 </plugin>
                 <!--compiler-->
                 <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>1.8</source> <!-- 或者你的 Java 版本 -->
+                        <target>1.8</target> <!-- 或者你的 Java 版本 -->
+                    </configuration>
                 </plugin>
                 <!--surefire-->
                 <plugin>
