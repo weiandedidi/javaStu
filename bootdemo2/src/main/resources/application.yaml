@@ -10,3 +10,10 @@ task:
 #  aop:
 #    auto: true
 #    proxy-target-class: true
+
+# 异步线程池的配置很重要
+customer:
+  corePoolSize: 8   #核心线程
+  maximumPoolSize: 16 #最大线程
+  keepAliveTime: 6000 # 单位毫秒
+  queueCapacity: 200 # 队列200

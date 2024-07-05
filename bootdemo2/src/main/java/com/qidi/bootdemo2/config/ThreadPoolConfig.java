@@ -1,7 +1,7 @@
 package com.qidi.bootdemo2.config;
 
 import com.qidi.bootdemo2.utils.TraceThreadPool;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Value;import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.ExecutorService;
@@ -15,9 +15,23 @@ import java.util.concurrent.ExecutorService;
  */
 @Configuration
 public class ThreadPoolConfig {
+
+    @Value("${customer.corePoolSize}")
+    private int corePoolSize;
+
+    @Value("${customer.maximumPoolSize}")
+    private int maximumPoolSize;
+
+    @Value("${customer.keepAliveTime}")
+    private long keepAliveTime;
+
+    @Value("${customer.queueCapacity}")
+    private int queueCapacity;
+
+
     @Bean
-    public ExecutorService traceFixedThreadPool() {
+    public ExecutorService traceThreadPool() {
         // 创建一个固定大小的线程池，cpu的2倍
-        return TraceThreadPool.newFixedTraceThreadPool(4);
+        return TraceThreadPool.newCustomThreadPool(corePoolSize, maximumPoolSize, keepAliveTime, queueCapacity);
     }
 }

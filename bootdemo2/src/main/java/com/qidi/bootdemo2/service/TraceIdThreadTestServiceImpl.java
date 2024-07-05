@@ -19,7 +19,7 @@ public class TraceIdThreadTestServiceImpl {
      * 线程池的定义，源自方法com.qidi.bootdemo2.config.ThreadPoolConfig#traceFixedThreadPool()，使用自定义的线程池，线程池名称为traceFixedThreadPool
      */
     @Autowired
-    private ExecutorService traceFixedThreadPool;
+    private ExecutorService traceThreadPool;
 
     /**
      * 测试线程池
@@ -30,7 +30,7 @@ public class TraceIdThreadTestServiceImpl {
 
         //启动printThreadCount个线程打印
         for (int i = 0; i < 5; i++) {
-            traceFixedThreadPool.submit(this::printLogCase);
+            traceThreadPool.submit(this::printLogCase);
         }
     }
 
