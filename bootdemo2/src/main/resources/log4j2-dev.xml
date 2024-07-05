@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别从低到高优先级为：ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF。-->
+<!--status：设置 log4j2 自身内部的信息输出，可以不设置-->
+<!--monitorInterval：监视配置文件变化间隔时间，单位秒，Log4j2 能够自动检测配置文件是否修改，同时更新配置-->
+<configuration status="INFO" monitorInterval="30">
+    <!--先定义所有的 appender 附加器-->
+    <appenders>
+        <!--本地环境控制台输出配置-->
+        <console name="CONSOLE-LOG" target="SYSTEM_OUT">
+            <!--输出日志的格式
+                %d表示日期时间，
+                %thread表示线程名，
+                %-5level：级别从左显示5个字符宽度
+                %logger{50} 表示logger名字最长50个字符，否则按照句点分割。
+                %line：表示行号
+                %msg：日志消息
+                %n是换行符-->
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} =>[%thread] =>%-5level %logger{50}:%line - %msg%n"/>
+        </console>
+    </appenders>
+
+    <!--
+    1、root与logger是父子关系，没有特别定义logger的都默认为root。
+    2、任何一个类只会和一个logger对应，要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。
+    3、appender-ref 用于引用上面定义好的 appender 日志追加器，只有引用了，上面的 appender 才能生效. -->
+    <loggers>
+        <!--过滤掉 spring 和 mybatis 的一些无用的 DEBUG 信息;也可以单独指定自己的某个包-->
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="com.ctyun.context.guard.dog" level="INFO"/>
+        <!-- MyBatis SQL logger configuration 打印sql日志 -->
+        <Logger name="org.apache.ibatis.logging" level="debug" additivity="false"/>
+
+        <!--   本地打印控制台，测试和线上打印在file中    -->
+        <root level="INFO">
+            <appender-ref ref="CONSOLE-LOG"/>
+        </root>
+    </loggers>
+</configuration>

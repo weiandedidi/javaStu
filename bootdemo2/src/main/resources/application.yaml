@@ -17,3 +17,41 @@ customer:
   maximumPoolSize: 16 #最大线程
   keepAliveTime: 6000 # 单位毫秒
   queueCapacity: 200 # 队列200
+
+#swagger线上配置成false，线下true用于生成文档
+swagger:
+  enable: false
+
+spring:
+  ####### 配置启用的环境  #######
+  profiles:
+    active: test
+
+#####  dev 环境配置   #####
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+swagger:
+  enable: true
+logging:
+  config: classpath:log4j2-dev.xml
+
+#####  test 环境配置   #####
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+logging:
+  config: classpath:log4j2.xml
+
+#####  prod 环境配置   #####
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+logging:
+  config: classpath:log4j2.xml
