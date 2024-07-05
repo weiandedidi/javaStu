@@ -15,7 +15,7 @@ task:
 customer:
   corePoolSize: 8   #核心线程
   maximumPoolSize: 16 #最大线程
-  keepAliveTime: 6000 # 单位毫秒
+  keepAliveTime: 60000 # 单位毫秒
   queueCapacity: 200 # 队列200
 
 #swagger线上配置成false，线下true用于生成文档
