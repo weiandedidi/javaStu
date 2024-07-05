@@ -96,7 +96,7 @@ public class TraceThreadPool extends ThreadPoolExecutor {
         ThreadFactory threadFactory = new TraceThreadFactory();
         //拒绝策略, 直接抛出异常，了解线程情况，后面拉机器抵抗问题，比如扩大队列数量
         RejectedExecutionHandler handler = new ThreadPoolExecutor.AbortPolicy();
-        //存活时间
+        //存活时间的单位 毫秒
         TimeUnit unit = TimeUnit.MILLISECONDS;
         BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(queueCapacity);
 
