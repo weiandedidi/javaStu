@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 @Slf4j
 public class TraceIdThreadTestServiceImpl {
     /**
-     * 线程池的定义，源自方法com.qidi.bootdemo2.config.ThreadPoolConfig#traceFixedThreadPool()，使用自定义的线程池，线程池名称为traceFixedThreadPool
+     * 线程池的定义，自定义的线程池
      */
     @Autowired
     private ExecutorService traceThreadPool;
