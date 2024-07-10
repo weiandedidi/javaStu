@@ -1,5 +1,7 @@
 package com.qidi.bootdemo2.utils;
 
+import org.slf4j.MDC;
+
 import java.util.concurrent.Callable;
 
 /**
@@ -23,9 +25,10 @@ public class TraceCallable<V> implements Callable<V> {
     public V call() throws Exception {
         try {
             TraceIdUtil.setTraceId(traceId);
+            MDC.put("traceId", traceId);
             return task.call();
         } finally {
             TraceIdUtil.clear();
-        }
+            MDC.remove("traceId");        }
     }
 }

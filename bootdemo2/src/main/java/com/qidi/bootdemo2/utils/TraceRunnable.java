@@ -1,5 +1,7 @@
 package com.qidi.bootdemo2.utils;
 
+import org.slf4j.MDC;
+
 import java.util.concurrent.Callable;
 
 /**
@@ -22,9 +24,11 @@ public class TraceRunnable implements Runnable {
     public void run() {
         try {
             TraceIdUtil.setTraceId(traceId);
+            MDC.put("traceId", traceId);
             task.run();
         } finally {
             TraceIdUtil.clear();
+            MDC.remove("traceId");
         }
     }
 

@@ -3,8 +3,7 @@ package com.qidi.bootdemo2.controller.user;
 import com.qidi.bootdemo2.service.HelloService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author maqidi
@@ -19,11 +18,13 @@ public class UserController {
     HelloService helloService;
 
     @RequestMapping("/get")
-    public String getUserById(Long id) {
-        log.info("查找用户 {}", id);
-        log.info("内容不正确用户 {}", id);
-        log.info("这里编写点别的 {}", id);
-        return "userA";
+    public User getUserById(Long id) {
+        return new User(id, "userA", 18, "测试地址");
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public User updateUser(@RequestBody User user) {
+        return user;
     }
 
     @RequestMapping("/set")

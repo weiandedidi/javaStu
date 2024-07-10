@@ -203,12 +203,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.16.Final</version>
         </dependency>
-        <!--mockito的mock工具-->
+        <!--mockito-inline 比 mockito-core 支持的mock方法更多，比如mock静态方法等,且包含了mockito-core且这两个依赖不能同时使用-->
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>3.8.0</version>
-            <scope>test</scope>
+            <artifactId>mockito-inline</artifactId>
+            <scope>4.3.1</scope>
         </dependency>
         <!--assertj校验工具-->
         <dependency>

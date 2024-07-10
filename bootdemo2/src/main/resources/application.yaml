@@ -25,7 +25,7 @@ swagger:
 spring:
   ####### 配置启用的环境  #######
   profiles:
-    active: test
+    active: dev
 
 #####  dev 环境配置   #####
 ---

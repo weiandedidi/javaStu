@@ -12,7 +12,7 @@
         <RollingFile name="FILE-LOG" fileName="logs/context.log"
                      filePattern="logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
             <!--日志文件中日志信息的格式-->
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} =>[%thread] == %-5level %logger{50}:%line - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} =>[%thread] == %-5level %logger{50}:%line - %X{traceId} - %msg%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <!--日志文件大小超过多少时进行存档-->
