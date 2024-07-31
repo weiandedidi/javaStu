@@ -42,7 +42,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .enable(swaggerEnabled)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ctyun.context.guard.dog.adapter.controller")) // 替换为你的基础包路径
+                .apis(RequestHandlerSelectors.basePackage("com.qidi.bootdemo2.controller")) // 替换为你的基础包路径
                 .paths(PathSelectors.any())
                 .build();
     }

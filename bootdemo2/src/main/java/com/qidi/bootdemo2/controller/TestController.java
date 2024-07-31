@@ -5,6 +5,7 @@ import com.qidi.bootdemo2.service.ParamQuery;
 import com.qidi.bootdemo2.service.ParamRequest;
 import com.qidi.bootdemo2.service.ResultResponse;
 import com.qidi.bootdemo2.service.ValidService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +26,7 @@ import javax.validation.constraints.Min;
 @RequestMapping("/test")
 @Component
 @Validated
+@Slf4j
 public class TestController {
     @Autowired
     ValidService validService;
