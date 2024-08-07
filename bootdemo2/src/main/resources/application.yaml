@@ -1,8 +1,8 @@
 
 #异步任务线程池的大小
 task:
-  corePoolSize: 10
-  maxPoolSize: 50
+  corePoolSize: 8
+  maxPoolSize: 16
   queueCapacity: 200
   threadNamePrefix: "WarehouseExecutor-"
 # 配置aop启用

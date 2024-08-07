@@ -23,18 +23,21 @@ public class TraceIdThreadTestServiceImpl {
 
     /**
      * 测试线程池
-     *
-     * @param printThreadCount 线程池中启动的线程数
      */
-    public void printLog(int printThreadCount) {
+    public void printLog(String name) {
 
         //启动printThreadCount个线程打印
         for (int i = 0; i < 5; i++) {
-            traceThreadPool.submit(this::printLogCase);
+            traceThreadPool.submit(() -> printLogCase(name));
         }
     }
 
-    private void printLogCase() {
-        log.info("线程名称：{}，TraceId：{}", Thread.currentThread().getName(), TraceIdUtil.getTraceId());
+    private void printLogCase(String name) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("线程名称：{}，name: {}, TraceId：{}", Thread.currentThread().getName(), name, TraceIdUtil.getTraceId());
     }
 }

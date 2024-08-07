@@ -109,3 +109,89 @@ spring:
 http://localhost:8080/swagger-ui.html
 ```
 
+# HTTP 请求的完整流程（Spring Boot + Spring MVC + Tomcat）
+在一个典型的 Spring Boot 应用中，HTTP 请求从客户端到达服务器，经过一系列组件处理后，最终返回响应。以下是详细的处理流程：
+1. 客户端发起请求：客户端（浏览器、移动应用等）向服务器发送 HTTP 请求。
+2. 网络层：请求通过网络传输，抵达服务器的监听端口（通常是 80 或 443）。
+3. Tomcat 接收请求：Tomcat 作为一个 Servlet 容器，接收并处理请求。
+4. Tomcat Filter：在 Tomcat 内部，Filter 是请求处理链中的第一步。Tomcat Filter 是在 Servlet 规范中的过滤器，可以在请求到达 Servlet 之前对其进行处理。
+5. Servlet Filter：Spring Boot 应用中的 Servlet Filter 在嵌入的 Tomcat 中注册并应用于请求。这些过滤器也在请求到达 DispatcherServlet 之前执行。 
+6. DispatcherServlet：这是 Spring MVC 的核心组件。它将请求分发给适当的处理程序。 
+7. Interceptor（拦截器）：Spring MVC 的 HandlerInterceptor 在处理程序执行之前和之后拦截请求。这些拦截器可以用于处理请求、响应、会话等。 
+8. Controller：请求到达具体的 Controller 方法，根据业务逻辑进行处理，并生成响应数据。 
+9. 返回响应：Controller 处理完请求后，生成响应数据并返回给 DispatcherServlet。 
+10. Interceptor（拦截器）：在返回响应之前，Spring MVC 的拦截器再次对响应进行处理。 
+11. Servlet Filter：在响应返回给客户端之前，Servlet 过滤器再次对响应进行处理。 
+12. Tomcat Filter：同样，Tomcat 的过滤器也会对响应进行最终处理。 
+13. Tomcat 返回响应：Tomcat 将处理后的响应通过网络返回给客户端
+图示：
+```
++----------------------+     +-----------------------+
+|      Client          |     |        Server         |
++----------+-----------+     +-----------+-----------+
+           |                             |
+           | 1. HTTP Request             |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |      Tomcat         |
+           |                   +---------+-----------+
+           |                             |
+           | 2. Tomcat Filter (pre)      |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |   Servlet Filter    |
+           |                   +---------+-----------+
+           |                             |
+           | 3. Servlet Filter (pre)     |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |   DispatcherServlet |
+           |                   +---------+-----------+
+           |                             |
+           | 4. Interceptor (preHandle)  |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |      Controller     |
+           |                   +---------+-----------+
+           |                             |
+           | 5. Controller Method        |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |  Interceptor (post) |
+           |                   +---------+-----------+
+           |                             |
+           | 6. Interceptor (postHandle) |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |   DispatcherServlet |
+           |                   +---------+-----------+
+           |                             |
+           | 7. Servlet Filter (post)    |
+           |---------------------------->|
+           |                             |
+           |                             v
+           |                   +---------+-----------+
+           |                   |   Tomcat Filter     |
+           |                   +---------+-----------+
+           |                             |
+           | 8. Tomcat Filter (post)     |
+           |---------------------------->|
+           |                             |
+           |                             v
+           | 9. HTTP Response            |
+           |<----------------------------|
+           |                             |
+           +-----------------------------+
+```

@@ -30,8 +30,7 @@ public class ThreadPoolTestController {
         //主线程，启用子线程，5个进行调用
         log.info("主线程名称：{}，TraceId：{}", Thread.currentThread().getName(), TraceIdUtil.getTraceId());
         //启动五个子线程，循环调用, 主线程睡2秒，用于查看子线程会不会出现替换traceId
-        Thread.sleep(2000);
-        traceIdThreadTestService.printLog(5);
+        traceIdThreadTestService.printLog(name);
         return "success";
     }
 
