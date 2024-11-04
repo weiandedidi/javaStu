@@ -33,7 +33,6 @@
 
     <name>javaStu</name>
     <modules>
-        <module>bootdemo</module>
         <module>bootdemo2</module>
         <module>thrift</module>
         <module>springdemo</module>
