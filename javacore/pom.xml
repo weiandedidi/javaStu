@@ -29,7 +29,7 @@
     <artifactId>javacore</artifactId>
     <properties>
         <slf4j.version>1.7.6</slf4j.version>
-        <spring.version>3.2.16.RELEASE</spring.version>
+        <spring.version>5.2.22.RELEASE</spring.version>
         <httpclient.version>4.5.1</httpclient.version>
         <spring-integration-kafka.version>1.2.0.RELEASE</spring-integration-kafka.version>
     </properties>
