@@ -53,16 +53,14 @@ public class Test {
 
     @Data
     @AllArgsConstructor
-    static
-    class Aoo {
+    public static class Aoo {
         private long age;
         private String name;
     }
 
     @Data
     @AllArgsConstructor
-    static
-    class Boo {
+    public static class Boo {
         private Double age;
         private String name;
     }

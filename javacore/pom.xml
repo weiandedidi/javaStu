@@ -35,11 +35,11 @@
     </properties>
 
     <dependencies>
-        <!--lombok-->
+        <!--lombok 版本需要升级和idea匹配-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
         <!-- logging begin -->
@@ -252,6 +252,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.6</version>
+        </dependency>
+        <!-- ACDAT 算法依赖，Aho-Corasick 自动机 (AC 自动机) 是实现高效多模式匹配的理想选择，用于 文本匹配，如敏感词过滤，关键词提取，文本分类等。 -->
+        <dependency>
+            <groupId>com.hankcs</groupId>
+            <artifactId>aho-corasick-double-array-trie</artifactId>
+            <version>1.2.3</version>
         </dependency>
 
     </dependencies>
