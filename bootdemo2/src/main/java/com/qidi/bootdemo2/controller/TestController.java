@@ -61,4 +61,9 @@ public class TestController {
         System.out.println("===================V3");
         return validService.checkParamsValid(id);
     }
+
+    @RequestMapping( method = RequestMethod.GET)
+    public ResultResponse<String> work(Long id) {
+        return new ResultResponse<String>(200, "success", id.toString());
+    }
 }

@@ -13,6 +13,8 @@ public class CharTest {
         System.out.println(getModelYear(a));
         System.out.println(getModelYear(b));
         System.out.println(getModelYear(c));
+        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println(stringBuilder.toString());
 
     }
 
